@@ -4,16 +4,32 @@ import './App.css';
 import list from './list';
 
 class App extends Component {
+
+  constructor(props){
+     super(props);
+
+     this.state = {
+       list: list
+     }
+
+     this.removeItem= this.removeItem.bind(this);
+  }
+
+  removeItem(id){
+    console.log('Remove');
+  }
+
   render() {
     return (
       <div className="App">
         <h1>
           {
-            list.map(item =>
+            this.state.list.map(item =>
               <div key={ item.objectID }>
                <h1> <a href={ item.url}> { item.title } </a> by { item.author } </h1>
                <h4> { item.num_comments } comments | { item.points } </h4>
-               
+               {/*use arrow function */}
+               <button type="button" onClick={ () => this.removeItem(item.objectID) }>Remove </button>
               </div>
             ) 
           }
