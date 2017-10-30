@@ -8,3 +8,13 @@ body {
   background: linear-gradient(to right, red, yellow);
   border-radius: 0px !important;
 }
+
+.searchForm{
+  height: 80px;
+  font-size: 50px;
+}
+
+.searchBtn{
+  height: 80px;
+  width: 200px;
+}
