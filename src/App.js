@@ -15,7 +15,8 @@ class App extends Component {
      super(props);
 
      this.state = {
-       list: list
+       list,
+       searchTerm: ''
      }
 
      this.removeItem = this.removeItem.bind(this);
@@ -48,16 +49,20 @@ class App extends Component {
   }
 
   render() {
+
+    const { list, searchTerm } = this.state;
+
     return (
       <div className="App">
 
+        <h1>  
         <form>
-          <input type="text" onChange={ this.searchValue } />
+          <input type="text" onChange={ this.searchValue } value={ searchTerm } />
         </form>  
 
-        <h1>
+        
           {
-            this.state.list.filter( isSearched(this.state.searchTerm) ).map(item =>
+            list.filter( isSearched(searchTerm) ).map(item =>
               <div key={ item.objectID }>
                <h1> <a href={ item.url}> { item.title } </a> by { item.author } </h1>
                <h4> { item.num_comments } comments | { item.points } </h4>

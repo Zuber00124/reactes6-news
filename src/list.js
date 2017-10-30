@@ -16,7 +16,7 @@ const list = [
       objectID: 2
     },
     {
-      title: 'words 1',
+      title: 'words 3',
       url: 'http://example3.com',
       author: 'author3',
       num_comments: 10,
