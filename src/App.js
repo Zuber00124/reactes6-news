@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Grid, Row, FormGroup } from 'react-bootstrap';
 import logo from './logo.svg';
-import './App.css';
 import list from './list';
 
 function isSearched(searchTerm){
@@ -54,10 +53,10 @@ class App extends Component {
     const { list, searchTerm } = this.state;
 
     return (
-      <div className="App">
+      <div>
         <Grid fluid>
           <Row>
-            <div className="jumbotron">
+            <div className="jumbotron text-center">
             <Search 
               onChange={ this.searchValue } 
               value={ searchTerm } 
@@ -133,16 +132,19 @@ const Search = ({ onChange, value, children}) => {
 
 const Table= ({ list, searchTerm, removeItem}) => {
   return(
-    <div>
+    <div className="col-sm-10 col-sm-offset-1">
       {
         list.filter( isSearched(searchTerm) ).map(item =>
           <div key={ item.objectID }>
            <h1> <a href={ item.url}> { item.title } </a> by { item.author } </h1>
-           <h4> { item.num_comments } comments | { item.points } </h4>
+           <h4> { item.num_comments } comments | { item.points } 
            <Button
+            className="btn btn-danger"
             type="button" 
             onClick={ () => removeItem(item.objectID) }
            >Remove me</Button>
+           </h4>
+           <hr/>
           </div>
         ) 
       }
@@ -175,9 +177,10 @@ function Button({ onClick, children }){
   )
 }
 */
-const Button = ({ onClick, children }) => 
-  <button 
-  onClick ={ onClick}
+const Button = ({ onClick, children, className= '' }) => 
+  <button
+    className={ className }
+    onClick ={ onClick}
   >
    { children } 
   </button> 
