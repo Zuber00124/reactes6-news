@@ -73,7 +73,7 @@ class App extends Component {
     );
   }
 }
-
+/*
 class Search extends Component {
   render(){
     const { onChange, value, children} = this.props;
@@ -88,28 +88,45 @@ class Search extends Component {
     )
   }
 }
-
-class Table extends Component {
-  render(){
-    const { list, searchTerm, removeItem} = this.props;
-    return(
-      <div>
-        {
-          list.filter( isSearched(searchTerm) ).map(item =>
-            <div key={ item.objectID }>
-             <h1> <a href={ item.url}> { item.title } </a> by { item.author } </h1>
-             <h4> { item.num_comments } comments | { item.points } </h4>
-             <Button
-              type="button" 
-              onClick={ () => removeItem(item.objectID) }
-             >Remove me</Button>
-            </div>
-          ) 
-        }
-      </div>
-    )
-  }
+*/
+const Search = ({ onChange, value, children}) => {
+  return(
+    <form>
+      { children }
+      <input 
+        type="text" 
+        onChange={ onChange } 
+        value={ value } />
+    </form> 
+  )
 }
+
+// class Table extends Component {
+//   render(){
+//     const { list, searchTerm, removeItem} = this.props;
+    
+//   }
+// }
+
+const Table= ({ list, searchTerm, removeItem}) => {
+  return(
+    <div>
+      {
+        list.filter( isSearched(searchTerm) ).map(item =>
+          <div key={ item.objectID }>
+           <h1> <a href={ item.url}> { item.title } </a> by { item.author } </h1>
+           <h4> { item.num_comments } comments | { item.points } </h4>
+           <Button
+            type="button" 
+            onClick={ () => removeItem(item.objectID) }
+           >Remove me</Button>
+          </div>
+        ) 
+      }
+    </div>
+  )
+}
+
 /*
 class Button extends Component {
   render(){
