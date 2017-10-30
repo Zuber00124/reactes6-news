@@ -110,7 +110,7 @@ class Table extends Component {
     )
   }
 }
-
+/*
 class Button extends Component {
   render(){
     const { onClick, children} = this.props;
@@ -124,5 +124,22 @@ class Button extends Component {
     )
   }
 }
+*//*
+function Button({ onClick, children }){
+  return(
+    <button 
+      onClick ={ onClick}
+    >
+     { children } 
+    </button> 
+  )
+}
+*/
+const Button = ({ onClick, children }) => 
+  <button 
+  onClick ={ onClick}
+  >
+   { children } 
+  </button> 
 
 export default App;
