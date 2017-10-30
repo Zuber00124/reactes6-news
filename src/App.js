@@ -12,7 +12,8 @@ class App extends Component {
        list: list
      }
 
-     this.removeItem= this.removeItem.bind(this);
+     this.removeItem = this.removeItem.bind(this);
+     this.searchValue = this.searchValue.bind(this);
   }
 
   /*
@@ -35,9 +36,19 @@ class App extends Component {
     this.setState({ list: updatedList });
   }
 
+  searchValue(event){
+    // console.log(event)
+    this.setState({ searchTerm: event.target.value });
+  }
+
   render() {
     return (
       <div className="App">
+
+        <form>
+          <input type="text" onChange={ this.searchValue } />
+        </form>  
+
         <h1>
           {
             this.state.list.map(item =>
