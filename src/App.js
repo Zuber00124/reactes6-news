@@ -15,6 +15,7 @@ class App extends Component {
      this.removeItem= this.removeItem.bind(this);
   }
 
+  /*
   removeItem(id){
     console.log('Remove item');
 
@@ -24,6 +25,13 @@ class App extends Component {
 
     const updatedList = this.state.list.filter(isNotId);
 
+    this.setState({ list: updatedList });
+  }
+*/
+
+  removeItem(id){
+    const isNotId = item => item.objectID !== id;
+    const updatedList = this.state.list.filter(isNotId);
     this.setState({ list: updatedList });
   }
 
