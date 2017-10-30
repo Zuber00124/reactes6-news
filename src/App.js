@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Grid, Row, FormGroup } from 'react-bootstrap';
 import logo from './logo.svg';
 import './App.css';
 import list from './list';
@@ -54,11 +55,18 @@ class App extends Component {
 
     return (
       <div className="App">
+        <Grid fluid>
+          <Row>
+            <div className="jumbotron">
+            <Search 
+              onChange={ this.searchValue } 
+              value={ searchTerm } 
+            >Search here</Search>
+            </div>
+          </Row>
+        </Grid>  
 
-        <Search 
-          onChange={ this.searchValue } 
-          value={ searchTerm } 
-        >Search here</Search>
+        
 
         <Table
           list={list }
@@ -68,7 +76,6 @@ class App extends Component {
 
         />
 
-        
       </div>
     );
   }
@@ -92,11 +99,26 @@ class Search extends Component {
 const Search = ({ onChange, value, children}) => {
   return(
     <form>
+    <FormGroup>
       { children }
-      <input 
-        type="text" 
-        onChange={ onChange } 
-        value={ value } />
+
+      <div className="input-group">
+        <input
+          className="form-control width100"
+          type="text" 
+          onChange={ onChange } 
+          value={ value } />
+
+        <span className="input-group-btn">
+          <button
+            className="btn btn-primary"
+            type="submit"
+          >Search
+          </button>
+        </span>  
+      </div>
+
+    </FormGroup>
     </form> 
   )
 }
