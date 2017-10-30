@@ -3,6 +3,12 @@ import logo from './logo.svg';
 import './App.css';
 import list from './list';
 
+function isSearched(searchTerm){
+  return function(item){
+    return !searchTerm || item.title.toLowerCase().includes(searchTerm.toLowerCase());
+  }
+}
+
 class App extends Component {
 
   constructor(props){
@@ -51,7 +57,7 @@ class App extends Component {
 
         <h1>
           {
-            this.state.list.map(item =>
+            this.state.list.filter( isSearched(this.state.searchTerm) ).map(item =>
               <div key={ item.objectID }>
                <h1> <a href={ item.url}> { item.title } </a> by { item.author } </h1>
                <h4> { item.num_comments } comments | { item.points } </h4>
